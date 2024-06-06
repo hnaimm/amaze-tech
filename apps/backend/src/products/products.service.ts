@@ -1,34 +1,44 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Products } from './entities/products.entity';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class ProductsService {
-  constructor(
-    @InjectRepository(Products)
-    private readonly producstRepository: Repository<Products>,
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-  create(createProductDto: CreateProductDto) {
-    return this.producstRepository.create(createProductDto);
+  async create(createProductDto: CreateProductDto) {
+    return this.prisma.prismaClient.product.create({
+      // TODO: data type
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      data: createProductDto,
+    });
   }
 
-  findAll() {
-    return this.producstRepository.find();
+  async findAll() {
+    return this.prisma.prismaClient.product.findMany();
   }
 
-  findOne(id: number) {
-    return this.producstRepository.findOneBy({ id });
+  async findOne(id: number) {
+    return this.prisma.prismaClient.product.findUnique({
+      where: { id },
+    });
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
-    return this.producstRepository.update(id, updateProductDto);
+  async update(id: number, updateProductDto: UpdateProductDto) {
+    return this.prisma.prismaClient.product.update({
+      where: { id },
+      // TODO: data type
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      data: updateProductDto,
+    });
   }
 
-  remove(id: number) {
-    return this.producstRepository.delete(id);
+  async remove(id: number) {
+    return this.prisma.prismaClient.product.delete({
+      where: { id },
+    });
   }
 }
