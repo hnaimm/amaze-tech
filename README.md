@@ -14,7 +14,11 @@ This site is mainly an e-commerce site for wearable devices. As any e-commerce w
 
 Currently Backend project is in progress, to run backend locally follow steps below:
 
-1- Run local MySQL server on port 3306 and create database called `myInitialDatabase`
+1- add .env file that includes the following
+
+```sh
+DATABASE_URL="mysql://<username>:<password>@<host>:<port>/<database_name>?schema=public"
+```
 
 2- Clone github repo
 
