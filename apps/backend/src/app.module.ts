@@ -2,22 +2,12 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Products } from './products/entities/products.entity';
+import { PrismaModule } from './prisma/prisma.module';
+import { TagsModule } from './tags/tags.module';
+import { CategoriesModule } from './categories/categories.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
-      database: 'myInitialDatabase',
-      entities: [Products],
-    }),
-    ProductsModule,
-  ],
+  imports: [PrismaModule, TagsModule, CategoriesModule, ProductsModule],
   controllers: [AppController],
   providers: [AppService],
 })

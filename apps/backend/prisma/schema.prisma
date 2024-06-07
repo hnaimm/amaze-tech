@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model category {
+  id          Int       @id @default(autoincrement())
+  name        String    @db.VarChar(255)
+  description String?   @db.Text
+  image_link  String?   @db.Text
+  updatedAt   DateTime  @default(now()) @db.Timestamp(0)
+  createdAt   DateTime  @default(now()) @db.Timestamp(0)
+  product     product[]
+}
+
+model inventory {
+  id        Int     @id @default(autoincrement())
+  quantity  Int
+  productId Int
+  product   product @relation(fields: [productId], references: [id], onUpdate: Restrict, map: "inventory_ibfk_1")
+
+  @@index([productId], map: "productId")
+}
+
+model product {
+  id          Int         @id @default(autoincrement())
+  name        String      @db.VarChar(255)
+  description String?     @db.Text
+  sku         String      @db.VarChar(255)
+  unit_price  Decimal     @db.Decimal(10, 0)
+  currency    String      @db.VarChar(10)
+  image_link  String      @db.Text
+  color       String?     @db.VarChar(255)
+  size        String?     @db.VarChar(255)
+  updatedAt   DateTime    @default(now()) @db.Timestamp(0)
+  createdAt   DateTime    @default(now()) @db.Timestamp(0)
+  categoryId  Int
+  inventory   inventory[]
+  category    category    @relation(fields: [categoryId], references: [id], onUpdate: Restrict, map: "product_ibfk_1")
+
+  @@index([categoryId], map: "categoryId")
+}
+
+model tag {
+  name String @id @db.VarChar(255)
+}
