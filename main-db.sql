@@ -1,0 +1,53 @@
+CREATE TABLE Tag (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  name VARCHAR(255),
+  updatedAt TIMESTAMP,
+  createdAt TIMESTAMP NOT NULL DEFAULT now()
+);
+
+CREATE TABLE Category (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  image_link TEXT,
+  updatedAt TIMESTAMP,
+  createdAt TIMESTAMP NOT NULL DEFAULT now()
+);
+
+
+CREATE TABLE Product (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  description TEXT,
+  sku VARCHAR(255) NOT NULL,
+  unit_price DECIMAL NOT NULL,
+  currency VARCHAR(10) NOT NULL,
+  image_link TEXT NOT NULL,
+  color VARCHAR(255),
+  size VARCHAR(255),
+  updatedAt TIMESTAMP,
+  createdAt TIMESTAMP NOT NULL DEFAULT now(),
+  categoryId INTEGER NOT NULL,
+  
+  FOREIGN KEY (categoryId) REFERENCES Category(id)
+  
+);
+
+
+CREATE TABLE Inventory (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  quantity INT NOT NULL,
+  productId INTEGER NOT NULL,
+  
+  FOREIGN KEY (productId) REFERENCES Product(id)
+);
+
+
+ALTER TABLE tag 
+MODIFY COLUMN name VARCHAR(255) NOT NULL;
+
+ALTER TABLE tag
+DROP COLUMN id;
+
+ALTER TABLE tag
+ADD PRIMARY KEY (name);
