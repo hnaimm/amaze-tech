@@ -31,4 +31,4 @@ _Add screenshots if applicable_
 
 ### ✍ Additional Info
 
-_Any addtional details_
+_Any additional details_
