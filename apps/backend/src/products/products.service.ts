@@ -20,15 +20,15 @@ export class ProductsService {
     return this.prisma.prismaClient.product.findMany();
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     return this.prisma.prismaClient.product.findUnique({
-      where: { id },
+      where: { id: parseInt(id) },
     });
   }
 
-  async update(id: number, updateProductDto: UpdateProductDto) {
+  async update(id: string, updateProductDto: UpdateProductDto) {
     return this.prisma.prismaClient.product.update({
-      where: { id },
+      where: { id: parseInt(id) },
       // TODO: data type
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
@@ -36,9 +36,9 @@ export class ProductsService {
     });
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     return this.prisma.prismaClient.product.delete({
-      where: { id },
+      where: { id: parseInt(id) },
     });
   }
 }
