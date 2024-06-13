@@ -22,7 +22,7 @@ export class CategoriesController {
   }
 
   @Get(':id')
-  getCategoryById(@Param('id') id: number) {
+  getCategoryById(@Param('id') id: string) {
     return this.categoriesService.findOne(id);
   }
 
@@ -35,14 +35,14 @@ export class CategoriesController {
 
   @Put(':id')
   updateCategory(
-    @Param('id') id: number,
+    @Param('id') id: string,
     @Body() updateCategoryDto: UpdateCategoryDto,
   ) {
     return this.categoriesService.update(id, updateCategoryDto);
   }
 
   @Delete(':id')
-  deleteCategory(@Param('id') id: number) {
+  deleteCategory(@Param('id') id: string) {
     return this.categoriesService.remove(id);
   }
 }

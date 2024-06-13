@@ -17,22 +17,22 @@ export class CategoriesService {
     return this.prisma.prismaClient.category.findMany();
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     return this.prisma.prismaClient.category.findUnique({
-      where: { id },
+      where: { id: parseInt(id) },
     });
   }
 
-  async update(id: number, updateCategoryDto: UpdateCategoryDto) {
+  async update(id: string, updateCategoryDto: UpdateCategoryDto) {
     return this.prisma.prismaClient.category.update({
-      where: { id },
+      where: { id: parseInt(id) },
       data: updateCategoryDto,
     });
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     return this.prisma.prismaClient.category.delete({
-      where: { id },
+      where: { id: parseInt(id) },
     });
   }
 }

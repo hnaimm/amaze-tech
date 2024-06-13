@@ -17,22 +17,22 @@ export class TagsService {
     return this.prisma.prismaClient.tag.findMany();
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     return this.prisma.prismaClient.tag.findUnique({
-      where: { id },
+      where: { id: parseInt(id) },
     });
   }
 
-  async update(id: number, updateTagDto: UpdateTagDto) {
+  async update(id: string, updateTagDto: UpdateTagDto) {
     return this.prisma.prismaClient.tag.update({
-      where: { id },
+      where: { id: parseInt(id) },
       data: updateTagDto,
     });
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     return this.prisma.prismaClient.tag.delete({
-      where: { id },
+      where: { id: parseInt(id) },
     });
   }
 }
