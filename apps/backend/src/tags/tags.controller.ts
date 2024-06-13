@@ -22,7 +22,7 @@ export class TagsController {
   }
 
   @Get(':id')
-  getTagById(@Param('id') id: number) {
+  getTagById(@Param('id') id: string) {
     return this.tagsService.findOne(id);
   }
 
@@ -32,12 +32,12 @@ export class TagsController {
   }
 
   @Put(':id')
-  updateTag(@Param('id') id: number, @Body() updateTagDto: UpdateTagDto) {
+  updateTag(@Param('id') id: string, @Body() updateTagDto: UpdateTagDto) {
     return this.tagsService.update(id, updateTagDto);
   }
 
   @Delete(':id')
-  deleteTag(@Param('id') id: number) {
+  deleteTag(@Param('id') id: string) {
     return this.tagsService.remove(id);
   }
 }
