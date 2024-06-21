@@ -23,6 +23,14 @@ export class UsersService {
     });
   }
 
+  async findOneByEmail(email: string) {
+    return this.prisma.prismaClient.user.findUnique({
+      // TODO: find any ID
+      // where: { email: email },
+      where: { id: 0 },
+    });
+  }
+
   async update(id: string, updateUserDto: UpdateUserDto) {
     return this.prisma.prismaClient.user.update({
       where: { id: parseInt(id) },
