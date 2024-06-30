@@ -46,5 +46,15 @@ model product {
 }
 
 model tag {
-  name String @id @db.VarChar(255)
+  name String @id @unique(map: "name") @db.VarChar(255)
+}
+
+model user {
+  id          Int    @id @default(autoincrement())
+  firstName   String @db.VarChar(255)
+  lastName    String @db.VarChar(255)
+  phoneNumber String @db.VarChar(255)
+  username    String @db.VarChar(255) @unique
+  email       String @db.VarChar(255) @unique
+  password    String @db.VarChar(255)
 }
