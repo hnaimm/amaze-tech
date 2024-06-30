@@ -16,9 +16,9 @@ export class TagsService {
     return this.prisma.prismaClient.tag.findMany();
   }
 
-  async remove(id: string) {
+  async remove(name: string) {
     return this.prisma.prismaClient.tag.delete({
-      where: { id: parseInt(id) },
+      where: { name: name },
     });
   }
 }

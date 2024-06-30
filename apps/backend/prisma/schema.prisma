@@ -46,10 +46,7 @@ model product {
 }
 
 model tag {
-  id        Int      @id @default(autoincrement())
-  name      String?  @db.VarChar(255)
-  updatedAt DateTime @default(now()) @db.Timestamp(0)
-  createdAt DateTime @default(now()) @db.Timestamp(0)
+  name String @id @unique(map: "name") @db.VarChar(255)
 }
 
 model user {
@@ -57,7 +54,7 @@ model user {
   firstName   String @db.VarChar(255)
   lastName    String @db.VarChar(255)
   phoneNumber String @db.VarChar(255)
-  username    String @db.VarChar(255)
-  email       String @db.VarChar(255)
+  username    String @db.VarChar(255) @unique
+  email       String @db.VarChar(255) @unique
   password    String @db.VarChar(255)
 }
