@@ -1,19 +1,30 @@
+"use client";
+
 import Image from "next/image";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Common/Navbar";
 import { IconButton } from "@radix-ui/themes";
+import ProductCard from "../../ui/ProductCard";
+import { ArrowRightIcon, ArrowLeftIcon } from "@radix-ui/react-icons";
+import CategoryCard from "../../ui/CategoryCard";
+import RoundedRectangleButton from "../../ui/RoundedRectangleButton";
+import SubsrcribeSection from "../../components/HomePage/SubsrcribeSection";
+import InstagramSection from "../../components/HomePage/InstagramSection";
+import Footer from "../../components/Common/Footer";
 import "./HomePage.css";
 import "../../globals.css";
 import "../../page.module.css";
-import ProductCard from "../../components/ProductCard";
-import { ArrowRightIcon, ArrowLeftIcon } from "@radix-ui/react-icons";
-import CategoryCard from "../../components/CategoryCard";
 
 const HomePage = () => {
   return (
-    <div className="w-full md:w-[90%] lg:w-[80%] mx-auto pt-4">
-      <Navbar />
+    <div className="pt-4 home-page">
+      <div className="px-0 md:px-[5%] lg:px-[10%]">
+        <Navbar />
+      </div>
 
-      <section id="home" className="flex flex-col justify-center items-center">
+      <section
+        id="home"
+        className="px-0 md:px-[5%] lg:px-[10%] pb-6 flex flex-col justify-center items-center"
+      >
         <div className="pt-28">
           <h1 className="text-7xl text-[#1f1f1f] mb-12">
             Redefining Your
@@ -41,7 +52,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section id="catalogue">
+      <section id="featured" className="px-0 md:px-[5%] lg:px-[10%] pt-6 pb-6">
         <h1 className="text-6xl text-[#1f1f1f] mt-20 mb-12">
           Featured Products
         </h1>
@@ -52,37 +63,45 @@ const HomePage = () => {
             name="Wireless Keyboard"
             price="$300.00"
             image={"/13.jpg"}
-            featured
+            badgeProps={{ text: "Featured", color: "gray" }}
           />
           <ProductCard
             id="2"
             name="Wireless Keyboard"
             price="$300.00"
             image={"/7.jpg"}
-            featured
+            badgeProps={{ text: "Featured", color: "gray" }}
           />
           <ProductCard
             id="3"
             name="Wireless Keyboard"
             price="$300.00"
             image={"/2.jpg"}
-            featured
+            badgeProps={{ text: "Featured", color: "gray" }}
           />
         </div>
       </section>
 
       <section
-        id="collections"
-        //   className="bg-[#edf2f4]"
+        id="categories"
+        className="px-0 md:px-[5%] lg:px-[10%] pt-6 pb-6 bg-[#edf2f4]"
       >
         <div className="mt-20 mb-12 flex flex-row justify-between items-center">
           <h1 className="text-6xl text-[#1f1f1f] ">Shop By Category</h1>
           <div className="flex flex-row gap-4">
             <IconButton className="bg-white" color="ruby">
-              <ArrowLeftIcon width="18" height="18" />
+              <ArrowLeftIcon
+                width="18"
+                height="18"
+                className="cursor-pointer"
+              />
             </IconButton>
             <IconButton className="bg-white" color="ruby">
-              <ArrowRightIcon width="18" height="18" />
+              <ArrowRightIcon
+                width="18"
+                height="18"
+                className="cursor-pointer"
+              />
             </IconButton>
           </div>
         </div>
@@ -93,7 +112,59 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* <section id="popular">popular</section> */}
+      <section
+        id="collections"
+        className="px-0 md:px-[5%] lg:px-[10%] pt-6 pb-6"
+      >
+        <div className="mt-20 mb-12 flex flex-row justify-between items-center">
+          <h1 className="text-6xl text-[#1f1f1f]">Explore Collections</h1>
+          <RoundedRectangleButton>Browse All Products</RoundedRectangleButton>
+        </div>
+        <div className="flex flex-row gap-3 justify-around">
+          <ProductCard
+            id="1"
+            image={"/13.jpg"}
+            badgeProps={{ text: "Watch", color: "gold" }}
+          />
+          <ProductCard
+            id="2"
+            image={"/7.jpg"}
+            badgeProps={{ text: "Headset", color: "gold" }}
+          />
+          <ProductCard
+            id="3"
+            image={"/2.jpg"}
+            badgeProps={{ text: "Camera", color: "gold" }}
+          />
+        </div>
+        <div className="flex flex-row gap-3 justify-around mt-6">
+          <ProductCard
+            id="1"
+            image={"/13.jpg"}
+            badgeProps={{ text: "Audio", color: "gold" }}
+          />
+          <ProductCard
+            id="2"
+            image={"/7.jpg"}
+            badgeProps={{ text: "Accessory", color: "gold" }}
+          />
+          <ProductCard
+            id="3"
+            image={"/2.jpg"}
+            badgeProps={{ text: "Keyboard", color: "gold" }}
+          />
+        </div>
+      </section>
+
+      <section id="subscribe" className="px-0 md:px-[5%] lg:px-[10%] pt-6 pb-6">
+        <SubsrcribeSection />
+      </section>
+
+      <section id="instagram" className="px-0 md:px-[5%] lg:px-[10%] pt-6 pb-6">
+        <InstagramSection />
+      </section>
+
+      <Footer />
     </div>
   );
 };
