@@ -11,8 +11,6 @@ import SubsrcribeSection from "../../components/HomePage/SubsrcribeSection";
 import InstagramSection from "../../components/HomePage/InstagramSection";
 import Footer from "../../components/Common/Footer";
 import "./HomePage.css";
-import "../../globals.css";
-import "../../page.module.css";
 
 const HomePage = () => {
   return (
