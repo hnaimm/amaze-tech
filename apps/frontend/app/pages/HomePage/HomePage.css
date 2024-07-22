@@ -1,0 +1,37 @@
+.home-page * {
+  font-family: "Arsenal SC", sans-serif !important;
+  /* font-family: "Anek Kannada", sans-serif !important; */
+}
+.gradient-button {
+  /* background: none; */
+  /* border: 3px solid;
+  border-radius: 1.5rem;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    45deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888
+  );
+  color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: relative;
+  z-index: 1; */
+
+  background: linear-gradient(
+    45deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888
+  ) !important;
+  border: none !important;
+  border-radius: 1.5rem !important;
+
+  color: white !important;
+  font-weight: 500;
+}
