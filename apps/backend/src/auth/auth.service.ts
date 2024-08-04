@@ -2,11 +2,13 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { SignUpDto } from './dto/sign-up.dto';
+import { VerificationService } from 'src/verification/verification.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     private usersService: UsersService,
+    private verificationService: VerificationService,
     private jwtService: JwtService,
   ) {}
 
@@ -17,10 +19,18 @@ export class AuthService {
       throw new UnauthorizedException();
     }
 
+    //add veritification code to varification table
+    const verification = await this.verificationService.create({
+      code: userInfo.email,
+      email: userInfo.email,
+    });
+
     //Generate JWT
     const payload = { sub: newUser.id, email: newUser.email };
     return {
       access_token: await this.jwtService.signAsync(payload),
+      verification_code: verification.code,
+      user: newUser,
     };
   }
 
@@ -35,6 +45,7 @@ export class AuthService {
     const payload = { sub: user.id, email: user.email };
     return {
       access_token: await this.jwtService.signAsync(payload),
+      user,
     };
   }
 }
