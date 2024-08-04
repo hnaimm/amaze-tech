@@ -4,24 +4,24 @@ import LoginForm from "./../components/LoginPage/LoginForm";
 import RegisterForm from "./../components/LoginPage/RegisterForm";
 import "../../app/globals.css";
 import "../../app/page.module.css";
-import "./login.css";
+import "./style.css";
 
 const LoginPage = () => {
   return (
     <div className="page-wrapper w-[100vw] h-[100vh] flex justify-center items-center">
-      <Tabs.Root className="TabsRoot" defaultValue="tab1">
+      <Tabs.Root className="TabsRoot" defaultValue="login">
         <Tabs.List className="TabsList" aria-label="Login">
-          <Tabs.Trigger className="TabsTrigger" value="tab1">
+          <Tabs.Trigger className="TabsTrigger" value="login">
             Login
           </Tabs.Trigger>
-          <Tabs.Trigger className="TabsTrigger" value="tab2">
-            Password
+          <Tabs.Trigger className="TabsTrigger" value="register">
+            Register
           </Tabs.Trigger>
         </Tabs.List>
-        <Tabs.Content className="TabsContent" value="tab1">
+        <Tabs.Content className="TabsContent" value="login">
           <LoginForm />
         </Tabs.Content>
-        <Tabs.Content className="TabsContent" value="tab2">
+        <Tabs.Content className="TabsContent" value="register">
           <RegisterForm />
         </Tabs.Content>
       </Tabs.Root>

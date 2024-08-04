@@ -1,11 +1,14 @@
+"use client";
 import { useState } from "react";
-import Router from "next/router";
+import { useRouter } from "next/navigation";
 import * as Form from "@radix-ui/react-form";
 import axios from "axios";
 import { Button } from "@radix-ui/themes";
 import { toast } from "react-toastify";
 
 const RegisterForm = () => {
+  const router = useRouter();
+
   const [submitting, setSubmitting] = useState(false);
   const handleRegister = (data) => {
     setSubmitting(true);
@@ -14,16 +17,9 @@ const RegisterForm = () => {
       .post("http://localhost:8000/auth/register/", data)
       .then(function (response) {
         if (response.status == 200) {
-          const { verification_code, access_token, user } = response.data;
+          toast.success("Account Created Successfully!");
 
-          localStorage.setItem("access_token", access_token);
-          localStorage.setItem("user", JSON.stringify(user));
-
-          toast.success("Account Created Successfully!", {
-            onClick: () => {
-              Router.push(`/verify?code=${verification_code}`);
-            },
-          });
+          router.push(`/verify`);
         }
       })
       .catch(function (error) {

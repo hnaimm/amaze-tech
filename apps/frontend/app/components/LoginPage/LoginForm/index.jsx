@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const router = useRouter();
+
   const [submitting, setSubmitting] = useState(false);
   const handleLogin = (data) => {
     setSubmitting(true);
