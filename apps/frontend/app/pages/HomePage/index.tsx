@@ -11,6 +11,7 @@ import SubsrcribeSection from "../../components/HomePage/SubsrcribeSection";
 import InstagramSection from "../../components/HomePage/InstagramSection";
 import Footer from "../../components/Common/Footer";
 import "./HomePage.css";
+import Link from "next/link";
 
 const HomePage = () => {
   return (
@@ -42,9 +43,12 @@ const HomePage = () => {
                 At ShiftSmart, we're redefining your tech experience by offering
                 the latest & most innovative products.
               </p>
-              <button className="bg-[#1f1f1f] rounded-full text-white px-6 py-3">
+              <Link
+                className="bg-[#1f1f1f] rounded-full text-white px-6 py-3"
+                href="/products"
+              >
                 Browse Products
-              </button>
+              </Link>
             </div>
           </div>
         </div>
