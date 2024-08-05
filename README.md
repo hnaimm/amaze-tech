@@ -1,4 +1,4 @@
-# Shift Smart
+# Amaze Tech
 
 ## _E-commerce for wearable devices_
 
@@ -25,7 +25,7 @@ DATABASE_URL="mysql://<username>:<password>@<host>:<port>/<database_name>?schema
 3- Go to backend project directory
 
 ```sh
-cd ...\shift-smart\apps\backend
+cd ...\amaze-tech\apps\backend
 ```
 
 4- Install and run
@@ -51,7 +51,7 @@ npm run start:dev
 | Link                                                                                                                 |
 | -------------------------------------------------------------------------------------------------------------------- |
 | [Project Proposal](https://docs.google.com/document/d/1dAkaM6oAXLBcHaa7AQ56x4LWbx-9Tag1645hFyPkduU/edit?usp=sharing) |
-| [Github Repo](https://github.com/hnaimm/shift-smart)                                                                 |
+| [Github Repo](https://github.com/hnaimm/amaze-tech)                                                                 |
 | [Postman API Docs](https://www.postman.com/haifanm/workspace/my-public-workspace/collection/4074196-7a13789f-18b1-4884-a7a9-9393a97fc38e?action=share&creator=4074196)                                                                 |
 | [ClickUp Board](https://sharing.clickup.com/9018322507/b/h/6-901801976899-2/012df48664bd9a4)                                                                                                           |
 | Deployment                                                                                                           |
