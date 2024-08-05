@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import * as Form from "@radix-ui/react-form";
 import axios from "axios";
 import { Button } from "@radix-ui/themes";
@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const sourcePage = searchParams.get("source");
 
   const [submitting, setSubmitting] = useState(false);
   const handleLogin = (data) => {
@@ -23,7 +25,7 @@ const LoginForm = () => {
 
           toast.success("Logged in Successfully!");
 
-          router.push(`/wishlist`);
+          router.push(sourcePage ? `/${sourcePage}` : "/");
         }
       })
       .catch(function (error) {

@@ -13,9 +13,10 @@ import { toast } from "react-toastify";
 import "./style.css";
 
 const Navbar = () => {
-  const user = !!localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user"))
-    : undefined;
+  const user =
+    localStorage && localStorage.getItem("user")
+      ? JSON.parse(localStorage.getItem("user"))
+      : undefined;
   console.log("user", user);
 
   const handleLogout = () => {
@@ -35,22 +36,24 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="flex flex-row space-x-10">
-        <Link href="#home" className="uppercase text-white">
+        <Link href="/" className="uppercase text-white">
           home
         </Link>
-        <Link href="#catalogue" className="uppercase text-white">
+        <Link href="/products" className="uppercase text-white">
           catalogue
         </Link>
-        <Link href="#collections" className="uppercase text-white">
+        <Link href="/products" className="uppercase text-white">
           collections
         </Link>
-        <Link href="#popular" className="uppercase text-white">
+        <Link href="/products" className="uppercase text-white">
           popular
         </Link>
       </div>
       <div className="flex flex-row space-x-4 mr-4">
         <MagnifyingGlassIcon className="text-white h-6 w-6" />
-        <HeartFilledIcon className="text-white h-6 w-6" />
+        <Link href={"/wishlist"}>
+          <HeartFilledIcon className="text-white h-6 w-6" />
+        </Link>
 
         <DropdownMenu.Root>
           <DropdownMenu.Trigger asChild>

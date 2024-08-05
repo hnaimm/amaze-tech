@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Navbar from "../../components/Common/Navbar";
+import Link from "next/link";
 import { IconButton } from "@radix-ui/themes";
 import ProductCard from "../../ui/ProductCard";
 import { ArrowRightIcon, ArrowLeftIcon } from "@radix-ui/react-icons";
@@ -11,7 +12,6 @@ import SubsrcribeSection from "../../components/HomePage/SubsrcribeSection";
 import InstagramSection from "../../components/HomePage/InstagramSection";
 import Footer from "../../components/Common/Footer";
 import "./HomePage.css";
-import Link from "next/link";
 
 const HomePage = () => {
   return (
