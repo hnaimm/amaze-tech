@@ -69,13 +69,12 @@ export class VerificationService {
           ...user,
           is_verified: true,
         });
-        console.log('updatedUser', updatedUser);
 
         //Generate JWT
         const payload = { sub: user.id, email: user.email };
         const response = {
           access_token: await this.jwtService.signAsync(payload),
-          updatedUser,
+          user: updatedUser,
         };
 
         return response;

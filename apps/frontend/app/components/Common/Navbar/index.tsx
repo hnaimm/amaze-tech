@@ -17,7 +17,6 @@ const Navbar = () => {
     localStorage && localStorage.getItem("user")
       ? JSON.parse(localStorage.getItem("user"))
       : undefined;
-  console.log("user", user);
 
   const handleLogout = () => {
     localStorage.removeItem("user");
