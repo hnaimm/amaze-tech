@@ -1,12 +1,20 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  UnauthorizedException,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { SignUpDto } from './dto/sign-up.dto';
+import { VerificationService } from 'src/verification/verification.service';
+import generateVerificationCode from 'src/functions/generateVerificationCode';
+import sendVerificationEmail from 'src/functions/sendVerificationEmail';
 
 @Injectable()
 export class AuthService {
   constructor(
     private usersService: UsersService,
+    private verificationService: VerificationService,
     private jwtService: JwtService,
   ) {}
 
@@ -17,11 +25,26 @@ export class AuthService {
       throw new UnauthorizedException();
     }
 
-    //Generate JWT
-    const payload = { sub: newUser.id, email: newUser.email };
-    return {
-      access_token: await this.jwtService.signAsync(payload),
-    };
+    //add veritification code to varification table
+
+    const verificationCode = generateVerificationCode(userInfo.email);
+
+    const verification = await this.verificationService.create({
+      code: verificationCode,
+      email: userInfo.email,
+    });
+
+    try {
+      sendVerificationEmail(
+        verification.email,
+        verification.code,
+        newUser.firstName,
+      );
+
+      return {};
+    } catch (err) {
+      throw new InternalServerErrorException();
+    }
   }
 
   async signIn(signInEmail: string, signInPassword: string): Promise<any> {
@@ -35,6 +58,7 @@ export class AuthService {
     const payload = { sub: user.id, email: user.email };
     return {
       access_token: await this.jwtService.signAsync(payload),
+      user,
     };
   }
 }

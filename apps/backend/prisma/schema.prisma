@@ -57,4 +57,16 @@ model user {
   username    String @db.VarChar(255) @unique
   email       String @db.VarChar(255) @unique
   password    String @db.VarChar(255)
+
+  is_verified  Boolean @default(false)
+  verification verification?
+}
+
+model verification {
+  email        String @unique
+  code   String @db.VarChar(255) @unique
+
+  user             user   @relation(fields: [email], references: [email])
+
+  @@index([email], name: "email_idx")
 }

@@ -5,11 +5,13 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "fullstack::dev": "concurrently \"npm run start:dev --prefix apps/backend\" \"npm run dev --prefix apps/frontend\""
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
+    "concurrently": "^8.2.2",
     "prettier": "^3.2.5",
     "turbo": "latest"
   },

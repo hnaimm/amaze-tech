@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Navbar from "../../components/Common/Navbar";
+import Link from "next/link";
 import { IconButton } from "@radix-ui/themes";
 import ProductCard from "../../ui/ProductCard";
 import { ArrowRightIcon, ArrowLeftIcon } from "@radix-ui/react-icons";
@@ -42,9 +43,12 @@ const HomePage = () => {
                 At ShiftSmart, we're redefining your tech experience by offering
                 the latest & most innovative products.
               </p>
-              <button className="bg-[#1f1f1f] rounded-full text-white px-6 py-3">
+              <Link
+                className="bg-[#1f1f1f] rounded-full text-white px-6 py-3"
+                href="/products"
+              >
                 Browse Products
-              </button>
+              </Link>
             </div>
           </div>
         </div>

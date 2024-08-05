@@ -23,9 +23,9 @@ export class UsersService {
     });
   }
 
-  async update(id: string, updateUserDto: UpdateUserDto) {
+  async update(email: string, updateUserDto: UpdateUserDto) {
     return this.prisma.prismaClient.user.update({
-      where: { id: parseInt(id) },
+      where: { email },
       data: updateUserDto,
     });
   }

@@ -1,0 +1,179 @@
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/violet.css";
+@import "@radix-ui/colors/mauve.css";
+
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/violet.css";
+
+.page-wrapper {
+  /* --s: 31px; /* control the size*/
+  /* --c1: #adadad;
+  --c2: #d7d7d7;
+
+  --c: #0000 71%, var(--c1) 0 79%, #0000 0;
+  --_s: calc(var(--s) / 2) / calc(2 * var(--s)) calc(2 * var(--s));
+  background:
+    linear-gradient(45deg, var(--c)) calc(var(--s) / -2) var(--_s),
+    linear-gradient(135deg, var(--c)) calc(var(--s) / 2) var(--_s),
+    radial-gradient(var(--c1) 35%, var(--c2) 37%) 0 0 / var(--s) var(--s); */
+
+  background-color: #fdfdfd;
+  opacity: 1;
+  background-image: radial-gradient(circle at center center, #ecedff, #fdfdfd),
+    repeating-radial-gradient(
+      circle at center center,
+      #f6f6f6,
+      #f6f6f6,
+      9px,
+      transparent 18px,
+      transparent 9px
+    );
+  background-blend-mode: multiply;
+}
+.TabsRoot {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  box-shadow: 0 2px 10px var(--black-a4);
+}
+
+.TabsList {
+  flex-shrink: 0;
+  display: flex;
+  border-bottom: 1px solid var(--mauve-6);
+}
+
+.TabsTrigger {
+  font-family: inherit;
+  background-color: white;
+  padding: 0 20px;
+  height: 45px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--mauve-11);
+  user-select: none;
+}
+.TabsTrigger:first-child {
+  border-top-left-radius: 6px;
+}
+.TabsTrigger:last-child {
+  border-top-right-radius: 6px;
+}
+.TabsTrigger:hover {
+  color: var(--violet-11);
+}
+.TabsTrigger[data-state="active"] {
+  color: var(--violet-11);
+  box-shadow:
+    inset 0 -1px 0 0 currentColor,
+    0 1px 0 0 currentColor;
+}
+.TabsTrigger:focus {
+  position: relative;
+  /* box-shadow: 0 0 0 2px black; */
+}
+
+.TabsContent {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: white;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  outline: none;
+}
+.TabsContent:focus {
+  /* box-shadow: 0 0 0 2px black; */
+}
+
+.Text {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--mauve-11);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.Fieldset {
+  margin-bottom: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.Label {
+  font-size: 13px;
+  line-height: 1;
+  margin-bottom: 10px;
+  color: var(--violet-12);
+  display: block;
+}
+
+.Input {
+  flex: 1 0 auto;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--violet-11);
+  box-shadow: 0 0 0 1px var(--violet-7);
+  height: 35px;
+}
+.Input:focus {
+  box-shadow: 0 0 0 2px var(--violet-8);
+}
+
+.SubmitButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0 15px;
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 500;
+  height: 35px;
+
+  margin-top: 40px;
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+}
+.SubmitButton.green {
+  background-color: var(--green-4);
+  color: var(--green-11);
+}
+.SubmitButton.green:hover {
+  background-color: var(--green-5);
+}
+.SubmitButton.green:focus {
+  box-shadow: 0 0 0 2px var(--green-7);
+}
+.SubmitButton.green:disabled {
+  background-color: rgb(173, 173, 173);
+  color: white;
+  pointer-events: none;
+  cursor: default;
+}
+
+.FormRoot {
+  width: 260px;
+  width: 100%;
+}
+
+.FormField {
+  display: grid;
+  margin-bottom: 10px;
+}
+
+.FormMessage {
+  font-size: 13px;
+  color: rgb(206, 57, 57);
+  opacity: 0.8;
+}
