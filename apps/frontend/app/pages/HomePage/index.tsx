@@ -40,7 +40,7 @@ const HomePage = () => {
             />
             <div className="info-box rounded-3xl bg-white px-8  py-6 w-[350px] absolute bottom-0 right-0 text-lg">
               <p className="mb-6">
-                At ShiftSmart, we're redefining your tech experience by offering
+                At AmazeTech, we're redefining your tech experience by offering
                 the latest & most innovative products.
               </p>
               <Link

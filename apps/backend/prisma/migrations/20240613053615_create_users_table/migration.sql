@@ -14,7 +14,7 @@ ALTER TABLE `tag` DROP PRIMARY KEY,
     ADD PRIMARY KEY (`id`);
 
 -- CreateTable
-CREATE TABLE `user` (
+CREATE TABLE IF NOT EXISTS `user` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `firstName` VARCHAR(255) NOT NULL,
     `lastName` VARCHAR(255) NOT NULL,

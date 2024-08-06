@@ -65,10 +65,20 @@ export class VerificationService {
 
         // 2- set is_verified=true for user
         const user = await this.usersService.findOne(verificationRecord.email);
-        const updatedUser = await this.usersService.update(user.email, {
+
+        let updateUserBody = {
           ...user,
           is_verified: true,
-        });
+          id: undefined,
+        };
+
+        delete updateUserBody.id;
+        delete updateUserBody.fullName;
+
+        const updatedUser = await this.usersService.update(
+          user.email,
+          updateUserBody,
+        );
 
         //Generate JWT
         const payload = { sub: user.id, email: user.email };
