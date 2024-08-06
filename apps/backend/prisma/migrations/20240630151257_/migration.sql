@@ -17,5 +17,13 @@ ALTER TABLE `tag` DROP PRIMARY KEY,
     MODIFY `name` VARCHAR(255) NOT NULL,
     ADD PRIMARY KEY (`name`);
 
--- CreateIndex
-CREATE UNIQUE INDEX `name` ON `tag`(`name`);
+-- CreateIndex (Idempotent)
+IF NOT EXISTS (
+    SELECT 1 
+    FROM INFORMATION_SCHEMA.STATISTICS 
+    WHERE TABLE_SCHEMA = DATABASE() 
+    AND TABLE_NAME = 'tag' 
+    AND INDEX_NAME = 'name'
+) THEN
+    CREATE UNIQUE INDEX `name` ON `tag`(`name`);
+END IF;
