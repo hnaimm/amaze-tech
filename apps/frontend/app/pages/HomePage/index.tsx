@@ -14,6 +14,27 @@ import Footer from "../../components/Common/Footer";
 import "./HomePage.css";
 
 const HomePage = () => {
+  const featuredProducts = [
+    {
+      id: "1",
+      name: "Wireless Keyboard",
+      price: "$300.00",
+      image: "/13.jpg",
+    },
+    {
+      id: "2",
+      name: "Wireless Keyboard",
+      price: "$300.00",
+      image: "/7.jpg",
+    },
+    {
+      id: "3",
+      name: "Wireless Keyboard",
+      price: "$300.00",
+      image: "/2.jpg",
+    },
+  ];
+
   return (
     <div className="pt-4 home-page">
       <div className="px-0 md:px-[5%] lg:px-[10%]">
@@ -60,27 +81,16 @@ const HomePage = () => {
         </h1>
 
         <div className="flex flex-row gap-3 justify-around">
-          <ProductCard
-            id="1"
-            name="Wireless Keyboard"
-            price="$300.00"
-            image={"/13.jpg"}
-            badgeProps={{ text: "Featured", color: "gray" }}
-          />
-          <ProductCard
-            id="2"
-            name="Wireless Keyboard"
-            price="$300.00"
-            image={"/7.jpg"}
-            badgeProps={{ text: "Featured", color: "gray" }}
-          />
-          <ProductCard
-            id="3"
-            name="Wireless Keyboard"
-            price="$300.00"
-            image={"/2.jpg"}
-            badgeProps={{ text: "Featured", color: "gray" }}
-          />
+          {featuredProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              id={product.id}
+              name={product.name}
+              price={product.price}
+              image={product.image}
+              badgeProps={{ text: "Featured", color: "gray" }}
+            />
+          ))}
         </div>
       </section>
 
