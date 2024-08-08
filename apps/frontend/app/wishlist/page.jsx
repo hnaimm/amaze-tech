@@ -1,17 +1,38 @@
 "use client";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useSearchParams } from "next/navigation";
 import ProtectedRoute from "../components/Common/ProtectedRoute";
 import Navbar from "../components/Common/Navbar";
 import "../../app/page.module.css";
 import "../../app/globals.css";
 
 const Wishlist = () => {
-  const [wishlist, setWishlist] = useState([
-    { id: 1, name: "Wireless Keyboard", price: 10, image: "/13.jpg" },
-    { id: 2, name: "Airpods", price: 20, image: "/7.jpg" },
-    { id: 3, name: "Speakers", price: 30, image: "/2.jpg" },
-  ]);
+  const searchParams = useSearchParams();
+  const productsList = [
+    {
+      id: "1",
+      name: "Sony Headphones",
+      price: 10,
+      image: "/13.jpg",
+    },
+    {
+      id: "2",
+      name: "Black Mouse",
+      price: 20,
+      image: "/7.jpg",
+    },
+    {
+      id: "3",
+      name: "Wireless Mic",
+      price: 30,
+      image: "/2.jpg",
+    },
+  ];
+
+  const [wishlist, setWishlist] = useState(
+    searchParams.get("source") ? [] : productsList
+  );
 
   const removeFromWishlist = (id) => {
     toast.success("Item removed from wishlist");

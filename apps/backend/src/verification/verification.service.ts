@@ -61,7 +61,7 @@ export class VerificationService {
         // If Code is verified
 
         // 1- delete it from veritification table
-        await this.remove(verificationRecord.email);
+        // await this.remove(verificationRecord.email);
 
         // 2- set is_verified=true for user
         const user = await this.usersService.findOne(verificationRecord.email);
