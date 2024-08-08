@@ -10,12 +10,14 @@ const ProductCard = ({
   price,
   image,
   badgeProps,
+  showHeart = false,
 }: {
   id: string;
   name?: string;
   price?: string;
   image: string;
   badgeProps?: BadgeProps & { text: string };
+  showHeart?: boolean;
 }) => {
   const [hearted, setHearted] = useState(false);
   const toggleHearted = (e) => {
@@ -52,14 +54,18 @@ const ProductCard = ({
                 </Text>
               )}
             </Box>
-            {hearted ? (
-              <div className="p-5 cursor-pointer" onClick={toggleHearted}>
-                <HeartFilledIcon color="red" width={22} height={22} />
-              </div>
-            ) : (
-              <div className="p-5 cursor-pointer" onClick={toggleHearted}>
-                <HeartIcon color="#1f1f1f" width={22} height={22} />
-              </div>
+            {showHeart && (
+              <>
+                {hearted ? (
+                  <div className="p-5 cursor-pointer" onClick={toggleHearted}>
+                    <HeartFilledIcon color="red" width={22} height={22} />
+                  </div>
+                ) : (
+                  <div className="p-5 cursor-pointer" onClick={toggleHearted}>
+                    <HeartIcon color="#1f1f1f" width={22} height={22} />
+                  </div>
+                )}
+              </>
             )}
           </div>
           {badgeProps && (

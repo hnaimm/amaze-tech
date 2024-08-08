@@ -112,6 +112,7 @@ const ProductsPage = () => {
               price={product.price}
               image={product.image}
               badgeProps={{ text: "Featured", color: "gray" }}
+              showHeart
             />
           ))}
         </div>
