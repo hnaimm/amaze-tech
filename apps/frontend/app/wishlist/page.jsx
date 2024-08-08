@@ -1,12 +1,14 @@
 "use client";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useSearchParams } from "next/navigation";
 import ProtectedRoute from "../components/Common/ProtectedRoute";
 import Navbar from "../components/Common/Navbar";
 import "../../app/page.module.css";
 import "../../app/globals.css";
 
 const Wishlist = () => {
+  const searchParams = useSearchParams();
   const productsList = [
     {
       id: "1",
@@ -28,7 +30,9 @@ const Wishlist = () => {
     },
   ];
 
-  const [wishlist, setWishlist] = useState(productsList);
+  const [wishlist, setWishlist] = useState(
+    searchParams.get("source") ? [] : productsList
+  );
 
   const removeFromWishlist = (id) => {
     toast.success("Item removed from wishlist");

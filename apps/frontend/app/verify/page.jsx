@@ -38,7 +38,7 @@ const VerifyPage = () => {
           localStorage.setItem("user", JSON.stringify(user));
 
           toast.success("Account verified Successfully!");
-          router.push(`/wishlist`);
+          router.push(`/wishlist?source=auth`);
         }
       })
       .catch(function (error) {
